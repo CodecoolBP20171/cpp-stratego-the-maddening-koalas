@@ -8,13 +8,11 @@ int main() {
     engine.init("Stratego", 800, 600);
     Scene scene;
 
-    for (int y = 0; y < 500; y += 50) {
-        for (int x = 0; x < 500; x += 50) {
-            Card card(engine.getRenderer(), "images/bomb.png", 50, 50, x, y, x+y);
-            scene.addObject(card);
-        }
-    }
+    Sprite* texture = new Sprite(engine.getRenderer(), "images/bomb.png");
+    SDL_Rect rect{0, 0, 100, 100};
+    Card card(texture, rect, 11);
 
+    scene.addObject(card);
 
 
     // wait a little so the animation won't start before the window appears

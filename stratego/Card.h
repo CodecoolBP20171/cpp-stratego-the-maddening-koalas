@@ -10,7 +10,7 @@
 
 class Card {
 public:
-    Card(Sprite& sprite, SDL_Rect& rect, int type);
+    Card(Sprite* sprite, SDL_Rect& rect, int type);
     ~Card();
     void draw(SDL_Renderer* renderer);
     int getType() const { return type; }
@@ -19,7 +19,7 @@ public:
 private:
     int type;
     SDL_Rect rect;
-    Sprite* texture;
+    SDL_Texture* texture;
 };
 
 #endif //STRATEGO_CARD_H

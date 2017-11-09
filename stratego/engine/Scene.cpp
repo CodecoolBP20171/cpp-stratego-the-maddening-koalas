@@ -20,7 +20,7 @@ void Scene::draw(SDL_Renderer* renderer)
 	// Update the screen
 	SDL_RenderPresent(renderer);
 }
-
+/*
 void Scene::clean()
 {
 	for (auto object : gameObjects)
@@ -28,3 +28,4 @@ void Scene::clean()
 		object.destroy();
 	}
 }
+ */
