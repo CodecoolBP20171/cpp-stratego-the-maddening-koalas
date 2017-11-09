@@ -5,14 +5,17 @@
 int main() {
     Engine engine;
 
-    engine.init("Stratego", 800, 600);
+    engine.init("Stratego", 750, 500);
     Scene scene;
 
     Sprite* texture = new Sprite(engine.getRenderer(), "images/bomb.png");
-    SDL_Rect rect{0, 0, 100, 100};
-    Card card(texture, rect, 11);
+    scene.setBeckgroundAndDraw(engine.getRenderer());
+    for(int i= 0; i < 5; ++i){
+        SDL_Rect rect{i*50 + 1 , i*50 + 1 , 48, 48};
+        Card card(texture, rect, 11);
+        scene.addObject(card);
+    }
 
-    scene.addObject(card);
 
 
     // wait a little so the animation won't start before the window appears
