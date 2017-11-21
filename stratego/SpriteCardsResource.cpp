@@ -4,7 +4,7 @@
 
 #include "SpriteCardsResource.h"
 
-void SpriteCardsResource::generateSprites(const std::string& color, SDL_Renderer* renderer) const {
+void SpriteCardsResource::generateSprites(const std::string& color, SDL_Renderer* renderer) {
     std::shared_ptr<Sprite> flagTexture = std::make_shared<Sprite>(renderer, "images/" + color + "_cards/flag.png");
     std::shared_ptr<Sprite> spyTexture = std::make_shared<Sprite>(renderer, "images/" + color + "_cards/spy.png");
     std::shared_ptr<Sprite> scoutTexture = std::make_shared<Sprite>(renderer, "images/" + color + "_cards/scout.png");
@@ -18,23 +18,20 @@ void SpriteCardsResource::generateSprites(const std::string& color, SDL_Renderer
     std::shared_ptr<Sprite> marshallTexture = std::make_shared<Sprite>(renderer, "images/" + color + "_cards/marshall.png");
     std::shared_ptr<Sprite> bombTexture = std::make_shared<Sprite>(renderer, "images/" + color + "_cards/bomb.png");
 
-    this->strategoSprites.push_back(std::move(flagTexture));
-    this->strategoSprites.push_back(std::move(spyTexture));
-    this->strategoSprites.push_back(std::move(scoutTexture));
-    this->strategoSprites.push_back(std::move(minerTexture));
-    this->strategoSprites.push_back(std::move(sergeantTexture));
-    this->strategoSprites.push_back(std::move(lieutenantTexture));
-    this->strategoSprites.push_back(std::move(captainTexture));
-    this->strategoSprites.push_back(std::move(majorTexture));
-    this->strategoSprites.push_back(std::move(colonelTexture));
-    this->strategoSprites.push_back(std::move(generalTexture));
-    this->strategoSprites.push_back(std::move(marshallTexture));
-    this->strategoSprites.push_back(std::move(bombTexture));
-
-    //TODO push back sprites into vector
-    //TODO Rename images-directories to blue and red
+    strategoSprites.push_back(std::move(flagTexture));
+    strategoSprites.push_back(std::move(spyTexture));
+    strategoSprites.push_back(std::move(scoutTexture));
+    strategoSprites.push_back(std::move(minerTexture));
+    strategoSprites.push_back(std::move(sergeantTexture));
+    strategoSprites.push_back(std::move(lieutenantTexture));
+    strategoSprites.push_back(std::move(captainTexture));
+    strategoSprites.push_back(std::move(majorTexture));
+    strategoSprites.push_back(std::move(colonelTexture));
+    strategoSprites.push_back(std::move(generalTexture));
+    strategoSprites.push_back(std::move(marshallTexture));
+    strategoSprites.push_back(std::move(bombTexture));
 }
 
-std::weak_ptr<Sprite> SpriteCardsResource::getSprite(SpriteName name) {
+std::shared_ptr<Sprite> SpriteCardsResource::getSprite(SpriteName name) {
     return strategoSprites[name];
 }

@@ -17,8 +17,8 @@ public:
     SpriteCardsResource(const std::string& color, SDL_Renderer* renderer) { this->generateSprites(color, renderer); }
     ~SpriteCardsResource() = default;
 
-    void generateSprites(const std::string& color, SDL_Renderer* renderer) const;
-    std::weak_ptr<Sprite> getSprite(SpriteName name);
+    void generateSprites(const std::string& color, SDL_Renderer* renderer);
+    std::shared_ptr<Sprite> getSprite(SpriteName name);
 
 
 private:
