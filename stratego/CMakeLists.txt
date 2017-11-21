@@ -9,9 +9,9 @@ include_directories(${SDL2_INCLUDE_DIRS})
 INCLUDE(FindPkgConfig)
 PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
 
-set(SOURCE_FILES main.cpp Board.cpp Board.h GameBoard.cpp GameBoard.h
-        SideBoard.cpp SideBoard.h Game.cpp Game.h Card.cpp Card.h Player.cpp Player.h
-        engine/Engine.h engine/Engine.cpp engine/Scene.h engine/Scene.cpp engine/Sprite.h engine/Sprite.cpp)
+set(SOURCE_FILES main.cpp GameBoard.cpp GameBoard.h
+        Game.cpp Game.h Card.cpp Card.h Player.cpp Player.h
+        engine/Engine.h engine/Engine.cpp engine/Scene.h engine/Scene.cpp engine/Sprite.h engine/Sprite.cpp GameObject.hpp SpriteCardsResource.cpp SpriteCardsResource.h StrategoEnum.h)
 add_executable(stratego ${SOURCE_FILES})
 
 target_link_libraries(stratego ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES})

@@ -4,15 +4,12 @@
 
 #include "Card.h"
 
-Card::Card(Sprite* sprite, SDL_Rect& rect, int value) {
-    this->texture = sprite->getTexture();
+Card::Card(std::shared_ptr<Sprite> sprite, SDL_Rect& rect, int value) {
+    this->sprite = sprite;
     this->rect = rect;
+    this->type = value;
 }
 
-Card::~Card() {
-    //this->destroy();
-}
-
-void Card::draw(SDL_Renderer *renderer) {
-    SDL_RenderCopy(renderer, texture, NULL, &rect);
+void Card::draw(SDL_Renderer *renderer) const {
+    SDL_RenderCopy(renderer, sprite->getTexture(), NULL, &rect);
 }

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STRATEGO_SCENE_H
+#define STRATEGO_SCENE_H
 
 #include "../Card.h"
 #include <vector>
@@ -9,15 +10,12 @@ public:
 	Scene();
 	~Scene();
 
-	void addObject(Card card);
+	void addObject(std::shared_ptr<GameObject> gameObject);
 	void draw(SDL_Renderer* renderer);
-    std::vector<Card> getObjects() const { return  gameObjects; }
-	void clean();
-	void setBeckgroundAndDraw(SDL_Renderer *renderer);
+    std::vector<std::shared_ptr<GameObject>> getObjects() const { return gameObjects; }
 
 private:
-	std::vector<Card> gameObjects;
-	void drawBackground(SDL_Renderer *renderer, SDL_Texture *texture, SDL_Rect rect);
-
+	std::vector<std::shared_ptr<GameObject>> gameObjects;
 };
 
+#endif // STRATEGO_SCENE_H

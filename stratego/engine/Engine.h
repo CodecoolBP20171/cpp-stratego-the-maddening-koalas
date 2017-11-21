@@ -1,4 +1,6 @@
-#pragma once
+#ifndef STRATEGO_ENGINE_H
+#define STRATEGO_ENGINE_H
+
 #include "SDL.h"
 #include "Scene.h"
 #include <iostream>
@@ -21,3 +23,5 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 };
+
+#endif // STRATEGO_ENGINE_H

@@ -6,16 +6,20 @@
 #define STRATEGO_PLAYER_H
 
 #include "Card.h"
-#include <list>
+#include <vector>
 
 class Player {
 public:
+    Player(const std::string& color, SDL_Renderer* renderer);
+    ~Player() = default;
 
-
+    std::vector< std::shared_ptr<Card> > getCards() const { return cards; }
 
 private:
-    int color;
-    std::list<Card> cards;
+    std::string color;
+    std::vector< std::shared_ptr<Card> > cards;
+    std::unique_ptr<SpriteCardsResource> spriteCards;
+    void generateCards();
 };
 
 

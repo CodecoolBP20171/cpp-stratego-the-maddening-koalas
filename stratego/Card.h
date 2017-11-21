@@ -5,21 +5,19 @@
 #ifndef STRATEGO_CARD_H
 #define STRATEGO_CARD_H
 
-
 #include "engine/Sprite.h"
+#include "GameObject.hpp"
 
-class Card {
+class Card : public GameObject {
 public:
-    Card(Sprite* sprite, SDL_Rect& rect, int type);
-    ~Card();
-    void draw(SDL_Renderer* renderer);
+    Card(std::shared_ptr<Sprite> sprite, SDL_Rect& rect, int type);
+    ~Card() = default;
+    void draw(SDL_Renderer* renderer) const override;
     int getType() const { return type; }
     void setPosition(int x, int y) { rect.x += x; rect.y += y; }
 
 private:
     int type;
-    SDL_Rect rect;
-    SDL_Texture* texture;
 };
 
 #endif //STRATEGO_CARD_H
