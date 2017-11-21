@@ -6,10 +6,9 @@
 #define STRATEGO_INITSPRITE_H
 
 
-#include <map>
 #include <vector>
-#include <bits/shared_ptr.h>
-#include <bits/unique_ptr.h>
+#include <memory>
+
 #include "StrategoEnum.h"
 #include "engine/Sprite.h"
 
@@ -23,7 +22,7 @@ public:
 
 
 private:
-    std::vector< std::shared_ptr<Sprite> > strategoSprites;
+    std::vector<std::shared_ptr<Sprite>> strategoSprites;
 };
 
 
