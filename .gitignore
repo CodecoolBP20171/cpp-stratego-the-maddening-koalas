@@ -19,6 +19,8 @@
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 stratego/.idea/workspace.xml
+stratego/.idea/**/workspace.xml
+**/workspace.xml
 
 # Gradle:
 .idea/**/gradle.xml

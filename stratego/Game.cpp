@@ -20,9 +20,11 @@ void Game::init() {
     std::shared_ptr<Background> bg = std::make_shared<Background>(std::move(backround), bgrect);
     scene.addBackground(bg);
 
-    player1 = std::make_shared<Player>("blue", engine.getRenderer());
-    player2 = std::make_shared<Player>("red", engine.getRenderer());
+    player1 = std::make_shared<Player>("red", engine.getRenderer());
+    player2 = std::make_shared<Player>("blue", engine.getRenderer());
 
+    currentPlayer = Color::red;
+    gameState = GameState::setupPhase;
 }
 
 void Game::run() {
@@ -37,7 +39,11 @@ void Game::run() {
     while (!quit) {
         timePassed = SDL_GetTicks();
 
-        preparePhase(quit);
+        if(gameState == GameState::setupPhase){
+            preparePhase(quit);
+        } else if(gameState == GameState::gamePhase){
+            playerPhase(quit);
+        }
 
 
         scene.draw(engine.getRenderer());
@@ -50,8 +56,22 @@ void Game::run() {
 }
 
 void Game::preparePhase(bool& quit) {
-    sideBoard->setPlayerCards(player1);
-    scene.addPlayer(player1);
+    if(!sideBoard->isSet()){
+        if(currentPlayer == Color::red){
+            sideBoard->setPlayerCards(player1);
+            scene.addPlayer(player1);
+            sideBoard->doneSet();
+        } else {
+            sideBoard->setPlayerCards(player2);
+            scene.addPlayer(player2);
+            sideBoard->doneSet();
+        }
+    }
+    // If every sideBoard is empty reset side bord set and switch color!!!
     eventHandler->handleEvent(quit, sideBoard);
+}
+
+void Game::playerPhase(bool& quit) {
+
 }
 

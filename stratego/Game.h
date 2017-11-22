@@ -20,7 +20,7 @@ public:
 
 private:
     void preparePhase(bool& quit);
-    void playerPhase();
+    void playerPhase(bool& quit);
     void reset();
     Engine engine;
 
@@ -31,6 +31,8 @@ private:
     std::shared_ptr<Player> player2;
     std::shared_ptr<MouseClick> mouseClick;
     std::shared_ptr<EventHandler> eventHandler;
+    Color currentPlayer;
+    GameState gameState;
 };
 
 //-init(): void // set instances default position

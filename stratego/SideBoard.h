@@ -15,8 +15,12 @@ public:
     void setPlayerCards(std::shared_ptr<Player> player);
     std::array< std::array<std::shared_ptr<Card>, 5>, 8> getBoard() { return board; }
     std::shared_ptr<Card> getCard(int x, int y);
+    bool isSet(){ return set; }
+    const bool doneSet(){ set = true; }
+    const bool reSet(){ set = false; }
 
 private:
+    mutable bool set = false;
     std::array< std::array<std::shared_ptr<Card>, 5>, 8> board;
 };
 
