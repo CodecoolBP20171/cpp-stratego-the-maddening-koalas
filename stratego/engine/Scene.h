@@ -4,6 +4,7 @@
 #include "../Card.h"
 #include "../Player.h"
 #include "../Background.h"
+#include "../EventHandler.h"
 #include <vector>
 
 class Scene
@@ -14,7 +15,7 @@ public:
 
 	void addPlayer(std::shared_ptr<Player> player);
     void addBackground(std::shared_ptr<Background> bg);
-    void draw(SDL_Renderer* renderer);
+    void draw(SDL_Renderer* renderer, EventHandler eventHandler);
 
     std::vector<std::shared_ptr<Player>> getPlayer() const { return players; }
 private:
