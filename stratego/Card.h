@@ -14,7 +14,7 @@ public:
     ~Card() = default;
     void draw(SDL_Renderer* renderer) const override;
     int getType() const { return type; }
-    void setPosition(int x, int y) { rect.x += x; rect.y += y; }
+    void setPosition(int x, int y) { rect.x = x; rect.y = y; }
 
 private:
     int type;

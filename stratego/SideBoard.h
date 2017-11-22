@@ -9,13 +9,13 @@
 
 class SideBoard {
 public:
-    SideBoard();
+    SideBoard() = default;
     ~SideBoard() = default;
 
     void setPlayerCards(std::shared_ptr<Player> player);
 
 private:
-    std::array< std::array<std::weak_ptr<Card>, 5>, 8> board;
+    std::array< std::array<std::shared_ptr<Card>, 5>, 8> board;
 };
 
 

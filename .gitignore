@@ -18,6 +18,7 @@
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
+stratego/.idea/workspace.xml
 
 # Gradle:
 .idea/**/gradle.xml
@@ -25,6 +26,7 @@
 
 # CMake
 cmake-build-debug/
+cmake-build-release/
 
 # Mongo Explorer plugin:
 .idea/**/mongoSettings.xml

@@ -4,10 +4,17 @@
 
 #include "Game.h"
 
+
+Game::Game() {
+    gameBoard = std::make_shared<GameBoard>();
+    sideBoard = std::make_shared<SideBoard>();
+}
+
+
 void Game::init() {
-    engine.init("Stratego", 800, 600);
+    engine.init("Stratego", 750, 500);
     std::shared_ptr<Sprite> backround = std::make_shared<Sprite>(engine.getRenderer(), "images/strategobackground.png");
-    SDL_Rect bgrect = {0, 0, 800, 600};
+    SDL_Rect bgrect = {0, 0, 750, 500};
     std::shared_ptr<Background> bg = std::make_shared<Background>(std::move(backround), bgrect);
     scene.addBackground(bg);
 
@@ -20,7 +27,7 @@ void Game::run() {
 
 void Game::preparePhase() {
     std::shared_ptr<Player> player1 = std::make_shared<Player>("red", engine.getRenderer());
-
+    sideBoard->setPlayerCards(player1);
     scene.addPlayer(player1);
 
     SDL_Delay(100);
@@ -39,6 +46,12 @@ void Game::preparePhase() {
             if (e.type == SDL_QUIT) {
                 quit = true;
             }
+            if (e.type == SDL_MOUSEBUTTONDOWN) {
+                int x;
+                int y;
+                SDL_GetMouseState(&x, &y);
+                std::cout << "X: " << x << " Y: " << y << std::endl;
+            }
         }
 
         scene.draw(engine.getRenderer());
@@ -48,3 +61,4 @@ void Game::preparePhase() {
         }
     }
 }
+

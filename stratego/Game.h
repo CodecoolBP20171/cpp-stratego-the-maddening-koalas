@@ -12,7 +12,7 @@
 
 class Game {
 public:
-    Game() = default;
+    Game();
     ~Game() = default;
     void run();
     void init();
@@ -24,8 +24,8 @@ private:
 
     Engine engine;
     Scene scene;
-    std::unique_ptr<GameBoard> gameBoard;
-    std::unique_ptr<SideBoard> sideBoard;
+    std::shared_ptr<GameBoard> gameBoard;
+    std::shared_ptr<SideBoard> sideBoard;
 private:
 
 };
