@@ -15,6 +15,8 @@ public:
     void draw(SDL_Renderer* renderer) const override;
     int getType() const { return type; }
     void setPosition(int x, int y) { rect.x = x; rect.y = y; }
+    int getPosX() { return rect.x; }
+    int getPosY() { return rect.y; }
 
 private:
     int type;

@@ -4,7 +4,20 @@
 
 #ifndef STRATEGO_STRATEGOENUM_H
 #define STRATEGO_STRATEGOENUM_H
+namespace BoardInfo {
+    const unsigned sideBoardStartX = 505;
+    const unsigned sideBoardEndX = 745;
+    const unsigned sideBoardStartY = 111;
+    const unsigned sideBoardEndY = 495;
 
+    const unsigned GameBoardStartX = 5;
+    const unsigned GameBoardEndX = 495;
+    const unsigned GameBoardStartY = 5;
+    const unsigned GameBoardEndY = 495;
+
+    const unsigned cardWidth = 48;
+    const unsigned cardHeigth = 48;
+}
 
 enum SpriteName {
     FLAG,

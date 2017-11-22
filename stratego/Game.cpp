@@ -26,7 +26,7 @@ void Game::run() {
 }
 
 void Game::preparePhase() {
-    std::shared_ptr<Player> player1 = std::make_shared<Player>("red", engine.getRenderer());
+    std::shared_ptr<Player> player1 = std::make_shared<Player>("blue", engine.getRenderer());
     sideBoard->setPlayerCards(player1);
     scene.addPlayer(player1);
 
@@ -39,7 +39,7 @@ void Game::preparePhase() {
     while (!quit) {
         timePassed = SDL_GetTicks();
 
-        eventHandler.handleEvent(quit);
+        eventHandler.handleEvent(quit, sideBoard);
 
         scene.draw(engine.getRenderer());
 

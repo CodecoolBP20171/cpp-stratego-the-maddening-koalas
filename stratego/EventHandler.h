@@ -7,10 +7,11 @@
 
 
 #include <SDL_events.h>
+#include "SideBoard.h"
 
 class EventHandler {
 public:
-    void handleEvent(bool& quit);
+    void handleEvent(bool& quit, std::shared_ptr<SideBoard>& sideBoard);
 
 private:
     SDL_Event event;
