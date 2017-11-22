@@ -41,7 +41,8 @@ enum SpriteName {
     COLONEL,
     GENERAL,
     MARSHALL,
-    BOMB
+    BOMB,
+    BACK
 };
 
 #endif //STRATEGO_STRATEGOENUM_H

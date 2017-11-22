@@ -43,4 +43,7 @@ void EventHandler::handlePrepPhase() const {
 
 void EventHandler::handleGameLoop() {
     //TODO if click inside the game board do stuff dude! Need some move handling on the cards validation etc.. too doh...
+    //TODO #1 check if click is on the board
+    //implement flow chart :D Mannn this is crazy.
+    //Ma mind telling me nooooooOO but my body telling me YeeEEEeeeeSsss.
 }
