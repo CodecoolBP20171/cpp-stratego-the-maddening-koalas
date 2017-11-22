@@ -4,7 +4,6 @@ Scene::Scene(){}
 
 Scene::~Scene() {}
 
-
 void Scene::addPlayer(std::shared_ptr<Player> player)
 {
 	players.push_back(player);
@@ -15,9 +14,9 @@ void Scene::addBackground(std::shared_ptr<Background> bg)
 	this->background = bg;
 }
 
-void Scene::draw(SDL_Renderer* renderer)
+void Scene::draw(SDL_Renderer* renderer, EventHandler eventHandler)
 {
-	SDL_RenderClear(renderer);
+
 	this->background->draw(renderer);
 	for (auto player : players)
 	{
@@ -25,8 +24,7 @@ void Scene::draw(SDL_Renderer* renderer)
 			card->draw(renderer);
 		}
 	}
-	// Update the screen
-	SDL_RenderPresent(renderer);
+    eventHandler.getHighLight()->draw(renderer);
 }
 
 

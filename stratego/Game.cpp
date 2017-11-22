@@ -3,6 +3,7 @@
 //
 
 #include "Game.h"
+#include "HighLight.h"
 
 
 Game::Game() {
@@ -17,7 +18,7 @@ void Game::init() {
     SDL_Rect bgrect = {0, 0, 750, 500};
     std::shared_ptr<Background> bg = std::make_shared<Background>(std::move(backround), bgrect);
     scene.addBackground(bg);
-
+    eventHandler.init(engine.getRenderer());
 }
 
 void Game::run() {
@@ -35,13 +36,15 @@ void Game::preparePhase() {
     bool quit = false;
     Uint32 timePassed = 0;
     Uint32 timestep = 16;
-
     while (!quit) {
         timePassed = SDL_GetTicks();
 
-        eventHandler.handleEvent(quit, sideBoard);
+        SDL_RenderClear(engine.getRenderer());
 
-        scene.draw(engine.getRenderer());
+        scene.draw(engine.getRenderer(), eventHandler);
+        eventHandler.handleEvent(quit, sideBoard, engine.getRenderer());
+
+        SDL_RenderPresent(engine.getRenderer());
 
         while(timePassed + timestep > SDL_GetTicks()) {
             SDL_Delay(0);
