@@ -8,6 +8,8 @@
 Game::Game() {
     gameBoard = std::make_shared<GameBoard>();
     sideBoard = std::make_shared<SideBoard>();
+    mouseClick = std::make_shared<MouseClick>();
+    eventHandler = std::make_shared<EventHandler>(mouseClick);
 }
 
 
@@ -18,28 +20,25 @@ void Game::init() {
     std::shared_ptr<Background> bg = std::make_shared<Background>(std::move(backround), bgrect);
     scene.addBackground(bg);
 
+    player1 = std::make_shared<Player>("blue", engine.getRenderer());
+    player2 = std::make_shared<Player>("red", engine.getRenderer());
+
 }
 
 void Game::run() {
-    preparePhase();
-
-}
-
-void Game::preparePhase() {
-    std::shared_ptr<Player> player1 = std::make_shared<Player>("blue", engine.getRenderer());
-    sideBoard->setPlayerCards(player1);
-    scene.addPlayer(player1);
+//    preparePhase();
 
     SDL_Delay(100);
 
     bool quit = false;
     Uint32 timePassed = 0;
     Uint32 timestep = 16;
-
+//    SDL_Event e;
     while (!quit) {
         timePassed = SDL_GetTicks();
 
-        eventHandler.handleEvent(quit, sideBoard);
+        preparePhase(quit);
+
 
         scene.draw(engine.getRenderer());
 
@@ -47,5 +46,12 @@ void Game::preparePhase() {
             SDL_Delay(0);
         }
     }
+
+}
+
+void Game::preparePhase(bool& quit) {
+    sideBoard->setPlayerCards(player1);
+    scene.addPlayer(player1);
+    eventHandler->handleEvent(quit, sideBoard);
 }
 
