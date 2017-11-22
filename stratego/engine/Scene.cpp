@@ -10,9 +10,15 @@ void Scene::addPlayer(std::shared_ptr<Player> player)
 	players.push_back(player);
 }
 
+void Scene::addBackground(std::shared_ptr<Background> bg)
+{
+	this->background = bg;
+}
+
 void Scene::draw(SDL_Renderer* renderer)
 {
 	SDL_RenderClear(renderer);
+	this->background->draw(renderer);
 	for (auto player : players)
 	{
 		for (auto card : player->getCards()) {
@@ -22,6 +28,7 @@ void Scene::draw(SDL_Renderer* renderer)
 	// Update the screen
 	SDL_RenderPresent(renderer);
 }
+
 
 /*
  SDL_SetRenderDrawColor(renderer, 177, 193, 216, SDL_ALPHA_OPAQUE);

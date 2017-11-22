@@ -4,8 +4,6 @@
 
 #include "GameBoard.h"
 
-GameBoard::GameBoard(std::shared_ptr<Sprite> sprite, SDL_Rect& rect) {
-//    this->sprite = sprite;
-//    this->rect = rect;
-}
+GameBoard::GameBoard() {
 
+}

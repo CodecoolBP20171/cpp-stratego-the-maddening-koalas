@@ -11,7 +11,7 @@
 
 class GameBoard  {
 public:
-    GameBoard(std::shared_ptr<Sprite> sprite, SDL_Rect& rect);
+    GameBoard();
     ~GameBoard() = default;
 
 private:

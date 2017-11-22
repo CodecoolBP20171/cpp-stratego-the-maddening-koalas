@@ -1,12 +1,13 @@
 #include <iostream>
 #include "engine/Engine.h"
+#include "Game.h"
 
 int main() {
-    Engine engine;
-
+    Game game;
+    game.init();
+    game.run();
     // Init engine
-    engine.init("Stratego", 750, 500);
-    Scene scene;
+/*
     std::shared_ptr<Player> player1 = std::make_shared<Player>("red", engine.getRenderer());
     std::shared_ptr<Player> player2 = std::make_shared<Player>("blue", engine.getRenderer());
 
@@ -37,6 +38,6 @@ int main() {
             SDL_Delay(0);
         }
     }
-
+*/
     return 0;
 }
