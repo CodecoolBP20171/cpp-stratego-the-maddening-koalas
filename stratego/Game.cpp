@@ -5,11 +5,11 @@
 #include "Game.h"
 
 
-Game::Game() {
+Game::Game(){
     gameBoard = std::make_shared<GameBoard>();
     sideBoard = std::make_shared<SideBoard>();
     mouseClick = std::make_shared<MouseClick>();
-    eventHandler = std::make_shared<EventHandler>(mouseClick);
+    eventHandler = std::make_shared<EventHandler>(mouseClick, sideBoard);
 }
 
 
@@ -45,7 +45,6 @@ void Game::run() {
             playerPhase(quit);
         }
 
-
         scene.draw(engine.getRenderer());
 
         while(timePassed + timestep > SDL_GetTicks()) {
@@ -56,6 +55,7 @@ void Game::run() {
 }
 
 void Game::preparePhase(bool& quit) {
+    // This part adding the cards to thi scene.
     if(!sideBoard->isSet()){
         if(currentPlayer == Color::red){
             sideBoard->setPlayerCards(player1);
@@ -68,10 +68,10 @@ void Game::preparePhase(bool& quit) {
         }
     }
     // If every sideBoard is empty reset side bord set and switch color!!!
-    eventHandler->handleEvent(quit, sideBoard);
+    eventHandler->handleEvent(quit, currentPlayer, gameState);
 }
 
 void Game::playerPhase(bool& quit) {
-
+    eventHandler->handleEvent(quit, currentPlayer, gameState);
 }
 

@@ -12,12 +12,17 @@
 
 class EventHandler {
 public:
-    EventHandler(std::shared_ptr<MouseClick> mc){ this->mc = mc; }
-    void handleEvent(bool& quit, std::shared_ptr<SideBoard>& sideBoard);
-
+    EventHandler(std::shared_ptr<MouseClick> mc, std::shared_ptr<SideBoard> sideBoard);
+//    ~EventHandler();
+    void handleEvent(bool& quit, Color player, GameState state);
 private:
+
+    std::shared_ptr<SideBoard> sideBoard;
     std::shared_ptr<MouseClick> mc;
     SDL_Event event;
+
+    void handleGameLoop();
+    void handlePrepPhase() const;
 };
 
 

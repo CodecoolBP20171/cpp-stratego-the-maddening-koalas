@@ -9,18 +9,18 @@
 
 class SideBoard {
 public:
-    SideBoard() = default;
+    SideBoard(){ set = false; }
     ~SideBoard() = default;
 
     void setPlayerCards(std::shared_ptr<Player> player);
     std::array< std::array<std::shared_ptr<Card>, 5>, 8> getBoard() { return board; }
     std::shared_ptr<Card> getCard(int x, int y);
     bool isSet(){ return set; }
-    const bool doneSet(){ set = true; }
-    const bool reSet(){ set = false; }
+    bool doneSet(){ set = true; }
+    bool reSet(){ set = false; }
 
 private:
-    mutable bool set = false;
+    bool set;
     std::array< std::array<std::shared_ptr<Card>, 5>, 8> board;
 };
 
