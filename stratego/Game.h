@@ -9,6 +9,7 @@
 #include "engine/Engine.h"
 #include "GameBoard.h"
 #include "SideBoard.h"
+#include "EventHandler.h"
 
 class Game {
 public:
@@ -18,6 +19,7 @@ public:
     void init();
 
 private:
+    EventHandler eventHandler;
     void preparePhase();
     void playerPhase();
     void reset();
@@ -26,8 +28,6 @@ private:
     Scene scene;
     std::shared_ptr<GameBoard> gameBoard;
     std::shared_ptr<SideBoard> sideBoard;
-private:
-
 };
 
 //-init(): void // set instances default position
