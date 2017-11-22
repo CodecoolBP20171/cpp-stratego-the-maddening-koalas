@@ -7,18 +7,11 @@ int main() {
     // Init engine
     engine.init("Stratego", 750, 500);
     Scene scene;
+    std::shared_ptr<Player> player1 = std::make_shared<Player>("red", engine.getRenderer());
+    std::shared_ptr<Player> player2 = std::make_shared<Player>("blue", engine.getRenderer());
 
-    // Bomb texture
-    std::shared_ptr<Sprite> texture = std::make_shared<Sprite>(engine.getRenderer(), "images/bomb.png");
-
-    for(int y= 0; y < 3; ++y) {
-        for (int x = 0; x < 3; ++x) {
-            SDL_Rect rect{x * 50 + 1 ,y * 50 + 1 , 48, 48};
-            std::shared_ptr<Card> card = std::make_shared<Card>(texture, rect, 11);
-            scene.addObject(card);
-        }
-    }
-
+    scene.addPlayer(player1);
+    scene.addPlayer(player2);
     // wait a little so the animation won't start before the window appears
     SDL_Delay(100);
 

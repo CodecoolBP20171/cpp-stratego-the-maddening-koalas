@@ -7,6 +7,7 @@
 
 #include "Card.h"
 #include <vector>
+#include "SpriteCardsResource.h"
 
 class Player {
 public:

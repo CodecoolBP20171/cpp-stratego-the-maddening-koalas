@@ -2,6 +2,7 @@
 #define STRATEGO_SCENE_H
 
 #include "../Card.h"
+#include "../Player.h"
 #include <vector>
 
 class Scene
@@ -10,12 +11,12 @@ public:
 	Scene();
 	~Scene();
 
-	void addObject(std::shared_ptr<GameObject> gameObject);
+	void addPlayer(std::shared_ptr<Player> player);
 	void draw(SDL_Renderer* renderer);
-    std::vector<std::shared_ptr<GameObject>> getObjects() const { return gameObjects; }
+    std::vector<std::shared_ptr<Player>> getPlayer() const { return players; }
 
 private:
-	std::vector<std::shared_ptr<GameObject>> gameObjects;
+	std::vector<std::shared_ptr<Player>> players;
 };
 
 #endif // STRATEGO_SCENE_H

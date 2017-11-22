@@ -5,17 +5,19 @@ Scene::Scene(){}
 Scene::~Scene() {}
 
 
-void Scene::addObject(std::shared_ptr<GameObject> gameObject)
+void Scene::addPlayer(std::shared_ptr<Player> player)
 {
-	gameObjects.push_back(gameObject);
+	players.push_back(player);
 }
 
 void Scene::draw(SDL_Renderer* renderer)
 {
 	SDL_RenderClear(renderer);
-	for (auto object : gameObjects)
+	for (auto player : players)
 	{
-		object->draw(renderer);
+		for (auto card : player->getCards()) {
+			card->draw(renderer);
+		}
 	}
 	// Update the screen
 	SDL_RenderPresent(renderer);

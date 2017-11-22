@@ -6,8 +6,9 @@
 #include "Player.h"
 
 
-Player::Player(const std::string &color, SDL_Renderer* renderer) {
-    spriteCards.reset(new SpriteCardsResource(color, renderer));
+Player::Player(const std::string& color, SDL_Renderer* renderer) {
+    this->color = color;
+    spriteCards.reset(new SpriteCardsResource(this->color, renderer));
     this->generateCards();
 }
 
