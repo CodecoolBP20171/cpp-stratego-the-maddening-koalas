@@ -14,6 +14,7 @@ public:
 
     void setPlayerCards(std::shared_ptr<Player> player);
     void removePlayerCard(std::shared_ptr<Card> card);
+    bool isCardOnSide(std::shared_ptr<Card> card);
     std::array< std::array<std::shared_ptr<Card>, 5>, 8> getBoard() { return board; }
     std::shared_ptr<Card> getCard(int& x, int& y);
     bool isSet(){ return set; }

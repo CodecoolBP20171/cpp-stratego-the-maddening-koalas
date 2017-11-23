@@ -38,3 +38,14 @@ void SideBoard::removePlayerCard(std::shared_ptr<Card> card) {
         }
     }
 }
+
+bool SideBoard::isCardOnSide(std::shared_ptr<Card> card) {
+    for (unsigned colY = 0; colY < 8; ++colY) {
+        for (unsigned colX = 0; colX < 5; ++colX) {
+            if(card == board[colY][colX]){
+                return true;
+            }
+        }
+    }
+    return false;
+}
