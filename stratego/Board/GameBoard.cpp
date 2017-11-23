@@ -21,6 +21,13 @@ void GameBoard::init(std::shared_ptr<Player> &player) {
             }
         }
     }
+    if(player->getColor() == Color::blue){
+        for (unsigned colY = 6; colY < 10; ++colY) {
+            for (unsigned colX = 0; colX < 10; ++colX) {
+                board[colY][colX]->flipCard();
+            }
+        }
+    }
 }
 
 std::shared_ptr<Card> GameBoard::getCard(int &x, int &y) {

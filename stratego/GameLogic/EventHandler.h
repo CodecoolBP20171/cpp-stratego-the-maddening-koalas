@@ -35,6 +35,7 @@ private:
     std::shared_ptr<HighLight> highLight;
     mutable bool isHighLighted = false;
 
+    bool clickIsSideBoard(int &x, int &y) const;
 };
 
 

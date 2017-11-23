@@ -35,7 +35,6 @@ void SideBoard::removePlayerCard(std::shared_ptr<Card> card) {
             if(card == board[colY][colX]){
                 board[colY][colX] = nullptr;
                 --amountofCards;
-                std::cout << "amount: " << amountofCards << std::endl;
                 return;
             }
         }

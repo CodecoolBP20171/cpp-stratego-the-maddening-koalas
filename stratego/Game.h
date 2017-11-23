@@ -36,11 +36,4 @@ private:
     GameState gameState;
 };
 
-//-init(): void // set instances default position
-//+run(): void // preparePhase and playerPhase
-//-generate(): void // static element and instance
-//-preparePhase(): void
-//-playerPhase(): void
-//-reset(): void // will call init and prepare()
-
 #endif //STRATEGO_GAME_H
