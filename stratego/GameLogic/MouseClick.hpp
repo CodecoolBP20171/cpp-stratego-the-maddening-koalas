@@ -10,15 +10,18 @@
 
 class MouseClick {
 public:
-    MouseClick(){ x = 0; y = 0;}
+    MouseClick(){
+        x.reset(new int(0));
+        y.reset(new int(0));
+    }
 //    void setMouseClick(int x, int y) {this->x = x; this->y =y; }
-    int* clickX(){ return &x; }
-    int* clickY(){ return &y; }
-    int getClickX(){ return x; }
-    int getClickY(){ return y; }
+    std::shared_ptr<int> clickX(){ return x; }
+    std::shared_ptr<int> clickY(){ return y; }
+    int getClickX(){ return *x; }
+    int getClickY(){ return *y; }
 private:
-    int x;
-    int y;
+    std::shared_ptr<int> x;
+    std::shared_ptr<int> y;
 };
 
 

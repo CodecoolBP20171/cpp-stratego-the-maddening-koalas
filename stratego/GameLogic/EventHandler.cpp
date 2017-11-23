@@ -30,7 +30,7 @@ void EventHandler::handleEvent(bool& quit, Color& player, GameState& state) {
         }
         if (event.type == SDL_MOUSEBUTTONDOWN) {
 
-            SDL_GetMouseState(mc->clickX(), mc->clickY());
+            SDL_GetMouseState(mc->clickX().get(), mc->clickY().get());
 
             if(state == GameState::setupPhase){
                 handlePrepPhase();
@@ -82,7 +82,7 @@ void EventHandler::handlePrepPhase() const {
                 sideBoard->removePlayerCard(currentCard);
             }
         } else  {
-            std::cout << "Board: " << currentCard << std::endl;
+//            std::cout << "Board: " << currentCard << std::endl;
         }
     }
 }
