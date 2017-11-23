@@ -3,9 +3,11 @@
 //
 
 #include "EventHandler.h"
-#include "HighLight.h"
 
-EventHandler::EventHandler(std::shared_ptr<MouseClick> mc, std::shared_ptr<SideBoard> sideBoard) {
+EventHandler::EventHandler(std::shared_ptr<MouseClick>& mc,
+                           std::shared_ptr<SideBoard>& sideBoard,
+                           std::shared_ptr<HighLight>& highlight) {
+    this->highLight = highlight;
     this->mc = mc;
     this->sideBoard = sideBoard;
 }
@@ -13,12 +15,12 @@ EventHandler::EventHandler(std::shared_ptr<MouseClick> mc, std::shared_ptr<SideB
 void EventHandler::init(SDL_Renderer *renderer) {
     std::shared_ptr<Sprite> highLightTexture = std::make_shared<Sprite>(renderer, "images/highlight.png");
     SDL_Rect rect = {BoardInfo::sideBoardStartX, BoardInfo::sideBoardStartY, 48 ,48};
-    this->highLight.reset(new HighLight(highLightTexture, rect));
+    highLight->setSprite(highLightTexture, rect);
 }
 // Modify it!!!!
 // void EventHandler::handleEvent(bool& quit, Color player, GameState state) 
 
-void EventHandler::handleEvent(bool& quit, std::shared_ptr<SideBoard>& sideBoard, SDL_Renderer* renderer) {
+void EventHandler::handleEvent(bool& quit, Color player, GameState state) {
 
     while( SDL_PollEvent( &event ) != 0 )
     {
@@ -40,19 +42,20 @@ void EventHandler::handleEvent(bool& quit, std::shared_ptr<SideBoard>& sideBoard
 }
 
 void EventHandler::handlePrepPhase() const {
-  if (mc->getClickX() > BoardInfo::sideBoardStartX && mc->getClickX() < BoardInfo::sideBoardEndX
-                && mc->getClickY() > BoardInfo::sideBoardStartY && mc->getClickY() < BoardInfo::sideBoardEndY) {
-                std::shared_ptr<Card> currentCard = sideBoard->getCard(mc->getClickX(), mc->getClickY());
-                if (currentCard) {
-                    if (isHighLighted) {
-                        highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());
-                    }
-                    else {
-                        highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());
-                        isHighLighted = true;
-                    }
-                }
-  }
+    if (mc->getClickX() > BoardInfo::sideBoardStartX && mc->getClickX() < BoardInfo::sideBoardEndX
+                && mc->getClickY() > BoardInfo::sideBoardStartY && mc->getClickY() < BoardInfo::sideBoardEndY)
+    {
+        std::shared_ptr<Card> currentCard = sideBoard->getCard(mc->getClickX(), mc->getClickY());
+        if (currentCard) {
+            if (isHighLighted) {
+                highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());
+            }
+            else {
+                highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());
+                isHighLighted = true;
+            }
+        }
+    }
 }
 
 void EventHandler::handleGameLoop() {

@@ -9,7 +9,9 @@ Game::Game(){
     gameBoard = std::make_shared<GameBoard>();
     sideBoard = std::make_shared<SideBoard>();
     mouseClick = std::make_shared<MouseClick>();
-    eventHandler = std::make_shared<EventHandler>(mouseClick, sideBoard);
+    highlight = std::make_shared<HighLight>();
+
+    eventHandler = std::make_shared<EventHandler>(mouseClick, sideBoard, highlight);
 }
 
 void Game::init() {
@@ -22,7 +24,7 @@ void Game::init() {
     player1 = std::make_shared<Player>("red", engine.getRenderer());
     player2 = std::make_shared<Player>("blue", engine.getRenderer());
 
-    eventHandler.init(engine.getRenderer());
+    eventHandler->init(engine.getRenderer());
 
     currentPlayer = Color::red;
     gameState = GameState::setupPhase;
@@ -45,7 +47,7 @@ void Game::run() {
             playerPhase(quit);
         }
 
-        scene.draw(engine.getRenderer(), eventHandler);
+        scene.draw(engine.getRenderer(), highlight);
 
         SDL_RenderPresent(engine.getRenderer());
 
@@ -72,7 +74,7 @@ void Game::preparePhase(bool& quit) {
     // If every sideBoard is empty reset side bord set and switch color!!!
   
     // have to change it in prep phase function
-    //eventHandler.handleEvent(quit, sideBoard, engine.getRenderer());
+    //eventHandler.handleEvent(quit, sideBoard);
     eventHandler->handleEvent(quit, currentPlayer, gameState);
 }
 

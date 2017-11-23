@@ -15,7 +15,7 @@ public:
 
 	void addPlayer(std::shared_ptr<Player> player);
     void addBackground(std::shared_ptr<Background> bg);
-    void draw(SDL_Renderer* renderer, EventHandler eventHandler);
+    void draw(SDL_Renderer* renderer, std::shared_ptr<HighLight>& highlight);
 
     std::vector<std::shared_ptr<Player>> getPlayer() const { return players; }
 private:

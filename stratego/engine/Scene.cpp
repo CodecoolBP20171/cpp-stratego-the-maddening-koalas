@@ -14,7 +14,7 @@ void Scene::addBackground(std::shared_ptr<Background> bg)
 	this->background = bg;
 }
 
-void Scene::draw(SDL_Renderer* renderer, EventHandler eventHandler)
+void Scene::draw(SDL_Renderer* renderer, std::shared_ptr<HighLight>& highlight)
 {
 
 	this->background->draw(renderer);
@@ -24,7 +24,7 @@ void Scene::draw(SDL_Renderer* renderer, EventHandler eventHandler)
 			card->draw(renderer);
 		}
 	}
-    eventHandler.getHighLight()->draw(renderer);
+    highlight->draw(renderer);
 }
 
 

@@ -9,8 +9,9 @@
 
 class HighLight : public GameObject {
 public:
-    HighLight(std::shared_ptr<Sprite> sprite, SDL_Rect& rect);
+    HighLight() = default;
     ~HighLight() = default;
+    void setSprite(std::shared_ptr<Sprite>& sprite, SDL_Rect& rect);
     void setPosition(int posX, int posY);
     void draw(SDL_Renderer* renderer) const override;
 };

@@ -31,6 +31,7 @@ private:
     std::shared_ptr<Player> player2;
     std::shared_ptr<MouseClick> mouseClick;
     std::shared_ptr<EventHandler> eventHandler;
+    std::shared_ptr<HighLight> highlight;
     Color currentPlayer;
     GameState gameState;
 };

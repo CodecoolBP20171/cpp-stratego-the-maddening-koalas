@@ -13,14 +13,13 @@
 
 class EventHandler {
 public:
-  // add shared pointers by reference
-  //TODO ADD RENDERER TO EVENT HANDLER!!!!!
-    EventHandler(std::shared_ptr<MouseClick>& mc, std::shared_ptr<SideBoard>& sideBoard);
+    EventHandler(std::shared_ptr<MouseClick>& mc,
+                 std::shared_ptr<SideBoard>& sideBoard,
+                 std::shared_ptr<HighLight>& highlight);
 //    ~EventHandler();
-    void handleEvent(bool& quit, Color player, GameState state);
 
     void init(SDL_Renderer* renderer);
-    void handleEvent(bool& quit, std::shared_ptr<SideBoard>& sideBoard, SDL_Renderer* renderer);
+    void handleEvent(bool& quit, Color player, GameState state);
     std::shared_ptr<HighLight> getHighLight() { return highLight; }
 
 private:
@@ -33,7 +32,7 @@ private:
     void handlePrepPhase() const;
 
     std::shared_ptr<HighLight> highLight;
-    bool isHighLighted = false;
+    mutable bool isHighLighted = false;
 
 };
 
