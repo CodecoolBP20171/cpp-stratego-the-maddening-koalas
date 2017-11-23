@@ -18,6 +18,8 @@ void SpriteCardsResource::generateSprites(const std::string& color, SDL_Renderer
     std::shared_ptr<Sprite> marshallTexture = std::make_shared<Sprite>(renderer, "images/" + color + "_cards/marshall.png");
     std::shared_ptr<Sprite> bombTexture = std::make_shared<Sprite>(renderer, "images/" + color + "_cards/bomb.png");
 
+    std::shared_ptr<Sprite> cardBack = std::make_shared<Sprite>(renderer, "images/" + color + "_cards/back.png");
+
     strategoSprites.push_back(std::move(flagTexture));
     strategoSprites.push_back(std::move(spyTexture));
     strategoSprites.push_back(std::move(scoutTexture));
@@ -30,6 +32,7 @@ void SpriteCardsResource::generateSprites(const std::string& color, SDL_Renderer
     strategoSprites.push_back(std::move(generalTexture));
     strategoSprites.push_back(std::move(marshallTexture));
     strategoSprites.push_back(std::move(bombTexture));
+    strategoSprites.push_back(std::move(cardBack));
 }
 
 std::shared_ptr<Sprite> SpriteCardsResource::getSprite(SpriteName name) {

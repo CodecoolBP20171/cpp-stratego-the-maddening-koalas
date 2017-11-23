@@ -19,6 +19,16 @@ namespace BoardInfo {
     const unsigned cardHeigth = 48;
 }
 
+enum Color {
+    red,
+    blue
+};
+
+enum GameState {
+    setupPhase,
+    gamePhase
+};
+
 enum SpriteName {
     FLAG,
     SPY,
@@ -31,7 +41,8 @@ enum SpriteName {
     COLONEL,
     GENERAL,
     MARSHALL,
-    BOMB
+    BOMB,
+    BACK
 };
 
 #endif //STRATEGO_STRATEGOENUM_H

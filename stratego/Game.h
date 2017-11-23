@@ -19,15 +19,20 @@ public:
     void init();
 
 private:
-    EventHandler eventHandler;
-    void preparePhase();
-    void playerPhase();
+    void preparePhase(bool& quit);
+    void playerPhase(bool& quit);
     void reset();
-
     Engine engine;
+
     Scene scene;
     std::shared_ptr<GameBoard> gameBoard;
     std::shared_ptr<SideBoard> sideBoard;
+    std::shared_ptr<Player> player1;
+    std::shared_ptr<Player> player2;
+    std::shared_ptr<MouseClick> mouseClick;
+    std::shared_ptr<EventHandler> eventHandler;
+    Color currentPlayer;
+    GameState gameState;
 };
 
 //-init(): void // set instances default position
