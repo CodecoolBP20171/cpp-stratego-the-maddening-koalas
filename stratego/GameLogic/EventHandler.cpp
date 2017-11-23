@@ -34,8 +34,14 @@ void EventHandler::handleEvent(bool& quit, Color& player, GameState& state) {
 
             if(state == GameState::setupPhase){
                 handlePrepPhase();
+                if(sideBoard->isEmpty()){
+                    player = Color::blue;
+                    sideBoard->reSet();
+                    break;
+                }
             } else if(state == GameState::gamePhase){
                 handleGameLoop();
+
             }
         }
     }

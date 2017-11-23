@@ -10,6 +10,7 @@ void SideBoard::setPlayerCards(std::shared_ptr<Player> player) {
             player->getCards()[colX+colY * 5]->setPosition(BoardInfo::sideBoardStartX + colX * BoardInfo::cardWidth,
                                                            BoardInfo::sideBoardStartY + colY * BoardInfo::cardHeigth);
             board[colY][colX] = player->getCards()[colX+colY * 5];
+            ++amountofCards;
         }
     }
 }
@@ -33,6 +34,8 @@ void SideBoard::removePlayerCard(std::shared_ptr<Card> card) {
         for (unsigned colX = 0; colX < 5; ++colX) {
             if(card == board[colY][colX]){
                 board[colY][colX] = nullptr;
+                --amountofCards;
+                std::cout << "amount: " << amountofCards << std::endl;
                 return;
             }
         }

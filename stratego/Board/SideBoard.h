@@ -9,12 +9,13 @@
 
 class SideBoard {
 public:
-    SideBoard(){ set = false; }
+    SideBoard(){ set = false; amountofCards = 0; }
     ~SideBoard() = default;
 
     void setPlayerCards(std::shared_ptr<Player> player);
     void removePlayerCard(std::shared_ptr<Card> card);
     bool isCardOnSide(std::shared_ptr<Card> card);
+    bool isEmpty(){ if(amountofCards <= 0) return true; else return false; }
     std::array< std::array<std::shared_ptr<Card>, 5>, 8> getBoard() { return board; }
     std::shared_ptr<Card> getCard(int& x, int& y);
     bool isSet(){ return set; }
@@ -23,6 +24,7 @@ public:
 
 private:
     bool set;
+    int amountofCards;
     std::array< std::array<std::shared_ptr<Card>, 5>, 8> board;
 };
 
