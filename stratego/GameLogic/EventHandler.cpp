@@ -47,12 +47,13 @@ void EventHandler::handlePrepPhase() const {
     if (x > BoardInfo::sideBoardStartX && x < BoardInfo::sideBoardEndX
                 && y > BoardInfo::sideBoardStartY && y < BoardInfo::sideBoardEndY)
     {
-       currentCard = sideBoard->getCard(x, y);
+        currentCard = sideBoard->getCard(x, y);
         if (currentCard) {
             if (isHighLighted) {
                 highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());
             }
             else {
+                std::cout << "FAK YOU!" << std::endl;
                 highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());
                 isHighLighted = true;
             }
@@ -64,6 +65,7 @@ void EventHandler::handlePrepPhase() const {
                 currentCard->setPosition(boardCard->getPosX(), boardCard->getPosY());
                 gameBoard->setCard(currentCard);
                 highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());
+                sideBoard->removePlayerCard(currentCard);
             }
         } else  {
             std::cout << "Board: " << currentCard << std::endl;

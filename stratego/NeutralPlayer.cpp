@@ -11,10 +11,11 @@ NeutralPlayer::NeutralPlayer(const Color &color, SDL_Renderer *renderer) {
 }
 
 void NeutralPlayer::generateCards() {
+    unsigned offset = 1;
     for (unsigned colY = 0; colY < 10; ++colY) {
         for (unsigned colX = 0; colX < 10; ++colX) {
-            SDL_Rect rect = {BoardInfo::GameBoardStartX + colX * BoardInfo::cardHeigth,
-                             BoardInfo::GameBoardStartY + colY * BoardInfo::cardWidth,
+            SDL_Rect rect = {BoardInfo::GameBoardStartX + colX * (BoardInfo::cardHeigth + offset),
+                             BoardInfo::GameBoardStartY + colY * (BoardInfo::cardWidth + offset),
                              BoardInfo::cardWidth,
                              BoardInfo::cardHeigth};
             if(( (1 < colX && 4 > colX) || (5 < colX && 8 > colX) )

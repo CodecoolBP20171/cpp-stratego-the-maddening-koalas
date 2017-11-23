@@ -10,7 +10,7 @@ namespace BoardInfo {
     const unsigned sideBoardStartY = 111;
     const unsigned sideBoardEndY = 495;
 
-    const unsigned GameBoardStartX = 5;
+    const unsigned GameBoardStartX = 6;
     const unsigned GameBoardEndX = 495;
     const unsigned GameBoardStartY = 5;
     const unsigned GameBoardEndY = 495;
