@@ -62,4 +62,10 @@ void SpriteCardsResource::generateNeutralSprites(SDL_Renderer* renderer) {
     strategoSprites.push_back(std::move(cardField));
     strategoSprites.push_back(std::move(emptyField));
     strategoSprites.push_back(std::move(waterField));
+    std::cout << "Done: " << strategoSprites.size() << std::endl;
+}
+
+std::shared_ptr<Sprite> SpriteCardsResource::getSprite(NeutralName name) {
+    std::cout << "Name: " << name << std::endl;
+    return strategoSprites[name];
 }

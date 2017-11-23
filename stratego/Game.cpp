@@ -3,10 +3,8 @@
 //
 
 #include "Game.h"
-#include "GameObject/HighLight.h"
 
 Game::Game(){
-    gameBoard = std::make_shared<GameBoard>();
     sideBoard = std::make_shared<SideBoard>();
 
     highlight = std::make_shared<HighLight>();
@@ -16,16 +14,20 @@ Game::Game(){
 
 void Game::init() {
     engine.init("Stratego", 750, 500);
-    std::shared_ptr<Sprite> backround = std::make_shared<Sprite>(engine.getRenderer(), "images/strategobackground.png");
+    std::shared_ptr<Sprite> backround = std::make_shared<Sprite>(engine.getRenderer(), "images/strategobackground2.png");
     SDL_Rect bgrect = {0, 0, 750, 500};
     std::shared_ptr<Background> bg = std::make_shared<Background>(std::move(backround), bgrect);
-    scene.addBackground(bg);
+
 
     player1 = std::make_shared<Player>(Color::red, engine.getRenderer());
     player2 = std::make_shared<Player>(Color::blue, engine.getRenderer());
+    neutralPlayer = std::make_shared<NeutralPlayer>(Color::neutral, engine.getRenderer());
+    gameBoard = std::make_shared<GameBoard>(neutralPlayer);
+    eventHandler->init(engine.getRenderer(), gameBoard);
 
-    eventHandler->init(engine.getRenderer());
-
+    scene.addBackground(bg);
+    scene.addNeutPlayer(neutralPlayer);
+    
     currentPlayer = Color::red;
     gameState = GameState::setupPhase;
 }
@@ -40,7 +42,7 @@ void Game::run() {
     while (!quit) {
         timePassed = SDL_GetTicks();
         SDL_RenderClear(engine.getRenderer());
-      
+
         if(gameState == GameState::setupPhase){
             preparePhase(quit);
         } else if(gameState == GameState::gamePhase){
@@ -62,6 +64,7 @@ void Game::preparePhase(bool& quit) {
     // This part adding the cards to thi scene.
     if(!sideBoard->isSet()){
         if(currentPlayer == Color::red){
+            gameBoard->init(player1);
             sideBoard->setPlayerCards(player1);
             scene.addPlayer(player1);
             sideBoard->doneSet();

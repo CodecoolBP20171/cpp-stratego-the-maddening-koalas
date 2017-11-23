@@ -49,4 +49,10 @@ enum SpriteName {
     WATER
 };
 
+enum NeutralName {
+    PHOLDER,
+    EMP,
+    WAT
+};
+
 #endif //STRATEGO_STRATEGOENUM_H

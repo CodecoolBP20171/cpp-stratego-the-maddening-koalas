@@ -20,16 +20,16 @@ void NeutralPlayer::generateCards() {
             if(( (1 < colX && 4 > colX) || (5 < colX && 8 > colX) )
                && (3 < colY && 6 > colY))
             {
-                cards[colX + colY * 10] = std::make_shared<Card>(spriteCards->getSprite(SpriteName::WATER),
-                                                           spriteCards->getSprite(SpriteName::WATER),
-                                                           rect,
-                                                           SpriteName::WATER);
+                cards.push_back(std::make_shared<Card>(spriteCards->getSprite(NeutralName::WAT),
+                                         spriteCards->getSprite(NeutralName::WAT),
+                                         rect,
+                                         SpriteName::WATER));
             }
             else {
-                cards[colX + colY * 10] = std::make_shared<Card>(spriteCards->getSprite(SpriteName::EMPTY),
-                                                           spriteCards->getSprite(SpriteName::EMPTY),
-                                                           rect,
-                                                           SpriteName::EMPTY);
+                cards.push_back(std::make_shared<Card>(spriteCards->getSprite(NeutralName::EMP),
+                                         spriteCards->getSprite(NeutralName::PHOLDER),
+                                         rect,
+                                         SpriteName::EMPTY));
             }
         }
     }

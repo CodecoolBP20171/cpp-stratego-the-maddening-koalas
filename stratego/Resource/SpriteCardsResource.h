@@ -20,6 +20,7 @@ public:
 
     void generateSprites(const Color& color, SDL_Renderer* renderer);
     std::shared_ptr<Sprite> getSprite(SpriteName name);
+    std::shared_ptr<Sprite> getSprite(NeutralName name);
 
 
 private:

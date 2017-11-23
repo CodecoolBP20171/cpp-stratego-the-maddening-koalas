@@ -12,7 +12,9 @@ EventHandler::EventHandler(std::shared_ptr<SideBoard>& sideBoard,
     this->sideBoard = sideBoard;
 }
 
-void EventHandler::init(SDL_Renderer *renderer) {
+void EventHandler::init(SDL_Renderer *renderer, std::shared_ptr<GameBoard>& gameBoard) {
+    this->gameBoard = gameBoard;
+
     std::shared_ptr<Sprite> highLightTexture = std::make_shared<Sprite>(renderer, "images/highlight.png");
     SDL_Rect rect = {BoardInfo::sideBoardStartX, BoardInfo::sideBoardStartY, 48 ,48};
     highLight->setSprite(highLightTexture, rect);
@@ -54,6 +56,18 @@ void EventHandler::handlePrepPhase() const {
                 highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());
                 isHighLighted = true;
             }
+        }
+    } else {
+        std::shared_ptr<Card> boardCard = gameBoard->getCard(x, y);
+        if(currentCard && boardCard){
+            //TODO Validity TEST!!!!!!!!!!!!!!!
+            std::cout << "Card: " << currentCard->getType()
+                      << "Face: " << boardCard->isFaceDown() << std::endl;
+            currentCard->setPosition(boardCard->getPosX(), boardCard->getPosY());
+            gameBoard->setCard(currentCard);
+//            currentCard = nullptr;
+        } else  {
+            std::cout << "Board: " << currentCard << std::endl;
         }
     }
 }

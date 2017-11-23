@@ -24,7 +24,17 @@ void Scene::draw(SDL_Renderer* renderer, std::shared_ptr<HighLight>& highlight)
 			card->draw(renderer);
 		}
 	}
+	for (auto player : neutralPlayers)
+	{
+		for (auto card : player->getCards()) {
+			card->draw(renderer);
+		}
+	}
     highlight->draw(renderer);
+}
+
+void Scene::addNeutPlayer(std::shared_ptr<NeutralPlayer> neutralPlayers) {
+	this->neutralPlayers.push_back(neutralPlayers);
 }
 
 

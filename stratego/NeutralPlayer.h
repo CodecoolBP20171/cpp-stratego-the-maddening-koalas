@@ -15,6 +15,8 @@ public:
     ~NeutralPlayer() = default;
     Color getColor(){ return color; }
 
+    std::vector< std::shared_ptr<Card> > getCards() const { return cards; }
+
 private:
     void generateCards();
     Color color;
