@@ -8,6 +8,7 @@ EventHandler::EventHandler(std::shared_ptr<SideBoard>& sideBoard,
                            std::shared_ptr<HighLight>& highlight) {
     this->highLight = highlight;
     mc = std::make_shared<MouseClick>();
+    currentCard = nullptr;
     this->sideBoard = sideBoard;
 }
 
@@ -39,10 +40,12 @@ void EventHandler::handleEvent(bool& quit, Color& player, GameState& state) {
 }
 
 void EventHandler::handlePrepPhase() const {
-    if (mc->getClickX() > BoardInfo::sideBoardStartX && mc->getClickX() < BoardInfo::sideBoardEndX
-                && mc->getClickY() > BoardInfo::sideBoardStartY && mc->getClickY() < BoardInfo::sideBoardEndY)
+    int x = mc->getClickX();
+    int y = mc->getClickY();
+    if (x > BoardInfo::sideBoardStartX && x < BoardInfo::sideBoardEndX
+                && y > BoardInfo::sideBoardStartY && y < BoardInfo::sideBoardEndY)
     {
-        std::shared_ptr<Card> currentCard = sideBoard->getCard(mc->getClickX(), mc->getClickY());
+       currentCard = sideBoard->getCard(x, y);
         if (currentCard) {
             if (isHighLighted) {
                 highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());

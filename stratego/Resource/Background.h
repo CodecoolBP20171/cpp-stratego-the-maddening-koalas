@@ -6,7 +6,7 @@
 #define STRATEGO_BACKGROUND_H
 
 
-#include "GameObject.hpp"
+#include "../GameObject/GameObject.hpp"
 
 class Background: public GameObject{
 public:

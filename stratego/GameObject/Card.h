@@ -5,7 +5,7 @@
 #ifndef STRATEGO_CARD_H
 #define STRATEGO_CARD_H
 
-#include "engine/Sprite.h"
+#include "../engine/Sprite.h"
 #include "GameObject.hpp"
 
 class Card : public GameObject {

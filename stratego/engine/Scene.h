@@ -1,10 +1,10 @@
 #ifndef STRATEGO_SCENE_H
 #define STRATEGO_SCENE_H
 
-#include "../Card.h"
+#include "../GameObject/Card.h"
 #include "../Player.h"
-#include "../Background.h"
-#include "../EventHandler.h"
+#include "../Resource/Background.h"
+#include "../GameLogic/EventHandler.h"
 #include <vector>
 
 class Scene

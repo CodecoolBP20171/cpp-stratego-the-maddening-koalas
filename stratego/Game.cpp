@@ -3,7 +3,7 @@
 //
 
 #include "Game.h"
-#include "HighLight.h"
+#include "GameObject/HighLight.h"
 
 Game::Game(){
     gameBoard = std::make_shared<GameBoard>();
@@ -21,8 +21,8 @@ void Game::init() {
     std::shared_ptr<Background> bg = std::make_shared<Background>(std::move(backround), bgrect);
     scene.addBackground(bg);
 
-    player1 = std::make_shared<Player>("red", engine.getRenderer());
-    player2 = std::make_shared<Player>("blue", engine.getRenderer());
+    player1 = std::make_shared<Player>(Color::red, engine.getRenderer());
+    player2 = std::make_shared<Player>(Color::blue, engine.getRenderer());
 
     eventHandler->init(engine.getRenderer());
 

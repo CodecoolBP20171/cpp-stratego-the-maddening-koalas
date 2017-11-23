@@ -21,7 +21,8 @@ namespace BoardInfo {
 
 enum Color {
     red,
-    blue
+    blue,
+    neutral
 };
 
 enum GameState {
@@ -42,7 +43,10 @@ enum SpriteName {
     GENERAL,
     MARSHALL,
     BOMB,
-    BACK
+    BACK,
+    PLACEHOLDER,
+    EMPTY,
+    WATER
 };
 
 #endif //STRATEGO_STRATEGOENUM_H

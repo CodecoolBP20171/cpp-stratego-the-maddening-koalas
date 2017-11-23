@@ -7,9 +7,9 @@
 
 #include <iostream>
 #include "engine/Engine.h"
-#include "GameBoard.h"
-#include "SideBoard.h"
-#include "EventHandler.h"
+#include "Board/GameBoard.h"
+#include "Board/SideBoard.h"
+#include "GameLogic/EventHandler.h"
 
 class Game {
 public:

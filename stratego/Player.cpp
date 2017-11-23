@@ -2,11 +2,11 @@
 // Created by alex on 2017.11.07..
 //
 
-#include "SpriteCardsResource.h"
+#include "Resource/SpriteCardsResource.h"
 #include "Player.h"
 
 
-Player::Player(const std::string& color, SDL_Renderer* renderer) {
+Player::Player(const Color& color, SDL_Renderer* renderer) {
     this->color = color;
     spriteCards.reset(new SpriteCardsResource(this->color, renderer));
     this->generateCards();

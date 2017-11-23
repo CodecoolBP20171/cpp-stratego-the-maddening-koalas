@@ -8,7 +8,7 @@
 
 #include <SDL_rect.h>
 #include <memory>
-#include "engine/Sprite.h"
+#include "../engine/Sprite.h"
 
 class GameObject {
 public:

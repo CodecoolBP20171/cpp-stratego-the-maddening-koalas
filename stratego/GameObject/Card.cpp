@@ -13,6 +13,7 @@ Card::Card(std::shared_ptr<Sprite> cardFace, std::shared_ptr<Sprite> cardBack, S
 }
 
 void Card::draw(SDL_Renderer *renderer) const {
+    if(!sprite) return;
     if(faceDown){
         SDL_RenderCopy(renderer, cardBack->getTexture(), NULL, &rect);
     } else{

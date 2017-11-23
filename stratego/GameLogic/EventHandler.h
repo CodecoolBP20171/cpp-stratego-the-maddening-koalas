@@ -7,9 +7,9 @@
 
 
 #include <SDL_events.h>
-#include "SideBoard.h"
+#include "../Board/SideBoard.h"
 #include "MouseClick.hpp"
-#include "HighLight.h"
+#include "../GameObject/HighLight.h"
 
 class EventHandler {
 public:
@@ -25,6 +25,7 @@ private:
 
     std::shared_ptr<SideBoard> sideBoard;
     std::shared_ptr<MouseClick> mc;
+    mutable std::shared_ptr<Card> currentCard;
     SDL_Event event;
 
     void handleGameLoop();
