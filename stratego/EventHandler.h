@@ -13,13 +13,12 @@
 
 class EventHandler {
 public:
-    EventHandler(std::shared_ptr<MouseClick>& mc,
-                 std::shared_ptr<SideBoard>& sideBoard,
+    EventHandler(std::shared_ptr<SideBoard>& sideBoard,
                  std::shared_ptr<HighLight>& highlight);
 //    ~EventHandler();
 
     void init(SDL_Renderer* renderer);
-    void handleEvent(bool& quit, Color player, GameState state);
+    void handleEvent(bool& quit, Color& player, GameState& state);
     std::shared_ptr<HighLight> getHighLight() { return highLight; }
 
 private:

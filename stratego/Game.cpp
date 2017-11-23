@@ -8,10 +8,10 @@
 Game::Game(){
     gameBoard = std::make_shared<GameBoard>();
     sideBoard = std::make_shared<SideBoard>();
-    mouseClick = std::make_shared<MouseClick>();
+
     highlight = std::make_shared<HighLight>();
 
-    eventHandler = std::make_shared<EventHandler>(mouseClick, sideBoard, highlight);
+    eventHandler = std::make_shared<EventHandler>(sideBoard, highlight);
 }
 
 void Game::init() {
@@ -72,9 +72,6 @@ void Game::preparePhase(bool& quit) {
         }
     }
     // If every sideBoard is empty reset side bord set and switch color!!!
-  
-    // have to change it in prep phase function
-    //eventHandler.handleEvent(quit, sideBoard);
     eventHandler->handleEvent(quit, currentPlayer, gameState);
 }
 

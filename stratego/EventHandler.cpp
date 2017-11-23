@@ -4,11 +4,10 @@
 
 #include "EventHandler.h"
 
-EventHandler::EventHandler(std::shared_ptr<MouseClick>& mc,
-                           std::shared_ptr<SideBoard>& sideBoard,
+EventHandler::EventHandler(std::shared_ptr<SideBoard>& sideBoard,
                            std::shared_ptr<HighLight>& highlight) {
     this->highLight = highlight;
-    this->mc = mc;
+    mc = std::make_shared<MouseClick>();
     this->sideBoard = sideBoard;
 }
 
@@ -17,10 +16,8 @@ void EventHandler::init(SDL_Renderer *renderer) {
     SDL_Rect rect = {BoardInfo::sideBoardStartX, BoardInfo::sideBoardStartY, 48 ,48};
     highLight->setSprite(highLightTexture, rect);
 }
-// Modify it!!!!
-// void EventHandler::handleEvent(bool& quit, Color player, GameState state) 
 
-void EventHandler::handleEvent(bool& quit, Color player, GameState state) {
+void EventHandler::handleEvent(bool& quit, Color& player, GameState& state) {
 
     while( SDL_PollEvent( &event ) != 0 )
     {

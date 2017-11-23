@@ -29,7 +29,6 @@ private:
     std::shared_ptr<SideBoard> sideBoard;
     std::shared_ptr<Player> player1;
     std::shared_ptr<Player> player2;
-    std::shared_ptr<MouseClick> mouseClick;
     std::shared_ptr<EventHandler> eventHandler;
     std::shared_ptr<HighLight> highlight;
     Color currentPlayer;
