@@ -35,6 +35,7 @@ void EventHandler::handleEvent(bool& quit, Color& player, GameState& state) {
             if(state == GameState::setupPhase){
                 handlePrepPhase();
                 if(sideBoard->isEmpty()){
+                    gameBoard->flipCards();
                     player = Color::blue;
                     sideBoard->reSet();
                     break;

@@ -17,6 +17,7 @@ public:
 
     void init(std::shared_ptr<Player>& player);
     std::shared_ptr<Card> getCard(int& x, int& y);
+    void flipCards();
     void setCard(std::shared_ptr<Card> card);
 
 

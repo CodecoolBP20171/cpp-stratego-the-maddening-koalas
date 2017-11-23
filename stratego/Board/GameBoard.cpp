@@ -46,3 +46,13 @@ void GameBoard::setCard(std::shared_ptr<Card> card) {
     }
 }
 
+void GameBoard::flipCards() {
+    for (auto &col : board) {
+        for (auto &cb : col) {
+            if(cb->getType() < SpriteName::PLACEHOLDER){
+                cb->flipCard();
+            }
+        }
+    }
+}
+
