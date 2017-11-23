@@ -60,12 +60,11 @@ void EventHandler::handlePrepPhase() const {
     } else {
         std::shared_ptr<Card> boardCard = gameBoard->getCard(x, y);
         if(currentCard && boardCard){
-            //TODO Validity TEST!!!!!!!!!!!!!!!
-            std::cout << "Card: " << currentCard->getType()
-                      << "Face: " << boardCard->isFaceDown() << std::endl;
-            currentCard->setPosition(boardCard->getPosX(), boardCard->getPosY());
-            gameBoard->setCard(currentCard);
-//            currentCard = nullptr;
+            if(boardCard->isFaceDown() && boardCard->getType() < SpriteName::WATER){
+                currentCard->setPosition(boardCard->getPosX(), boardCard->getPosY());
+                gameBoard->setCard(currentCard);
+                highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());
+            }
         } else  {
             std::cout << "Board: " << currentCard << std::endl;
         }

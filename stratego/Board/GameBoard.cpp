@@ -39,6 +39,7 @@ void GameBoard::setCard(std::shared_ptr<Card> card) {
     for (auto &col : board) {
         for (auto &cb : col) {
             if ( cb->getPosX() == card->getPosX() && cb->getPosY() == card->getPosY()) {
+                cb->flipCard();
                 cb = card;
             }
         }

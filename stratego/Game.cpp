@@ -27,7 +27,7 @@ void Game::init() {
 
     scene.addBackground(bg);
     scene.addNeutPlayer(neutralPlayer);
-    
+
     currentPlayer = Color::red;
     gameState = GameState::setupPhase;
 }
@@ -69,6 +69,7 @@ void Game::preparePhase(bool& quit) {
             scene.addPlayer(player1);
             sideBoard->doneSet();
         } else {
+            gameBoard->init(player2);
             sideBoard->setPlayerCards(player2);
             scene.addPlayer(player2);
             sideBoard->doneSet();
