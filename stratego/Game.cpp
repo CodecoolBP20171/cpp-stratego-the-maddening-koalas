@@ -3,7 +3,7 @@
 //
 
 #include "Game.h"
-
+#include "HighLight.h"
 
 Game::Game(){
     gameBoard = std::make_shared<GameBoard>();
@@ -11,7 +11,6 @@ Game::Game(){
     mouseClick = std::make_shared<MouseClick>();
     eventHandler = std::make_shared<EventHandler>(mouseClick, sideBoard);
 }
-
 
 void Game::init() {
     engine.init("Stratego", 750, 500);
@@ -23,29 +22,32 @@ void Game::init() {
     player1 = std::make_shared<Player>("red", engine.getRenderer());
     player2 = std::make_shared<Player>("blue", engine.getRenderer());
 
+    eventHandler.init(engine.getRenderer());
+
     currentPlayer = Color::red;
     gameState = GameState::setupPhase;
 }
 
 void Game::run() {
-//    preparePhase();
-
     SDL_Delay(100);
 
     bool quit = false;
     Uint32 timePassed = 0;
     Uint32 timestep = 16;
-//    SDL_Event e;
+
     while (!quit) {
         timePassed = SDL_GetTicks();
-
+        SDL_RenderClear(engine.getRenderer());
+      
         if(gameState == GameState::setupPhase){
             preparePhase(quit);
         } else if(gameState == GameState::gamePhase){
             playerPhase(quit);
         }
 
-        scene.draw(engine.getRenderer());
+        scene.draw(engine.getRenderer(), eventHandler);
+
+        SDL_RenderPresent(engine.getRenderer());
 
         while(timePassed + timestep > SDL_GetTicks()) {
             SDL_Delay(0);
@@ -68,6 +70,9 @@ void Game::preparePhase(bool& quit) {
         }
     }
     // If every sideBoard is empty reset side bord set and switch color!!!
+  
+    // have to change it in prep phase function
+    //eventHandler.handleEvent(quit, sideBoard, engine.getRenderer());
     eventHandler->handleEvent(quit, currentPlayer, gameState);
 }
 

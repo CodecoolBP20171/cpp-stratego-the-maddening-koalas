@@ -3,13 +3,23 @@
 //
 
 #include "EventHandler.h"
+#include "HighLight.h"
 
 EventHandler::EventHandler(std::shared_ptr<MouseClick> mc, std::shared_ptr<SideBoard> sideBoard) {
     this->mc = mc;
     this->sideBoard = sideBoard;
 }
 
-void EventHandler::handleEvent(bool& quit, Color player, GameState state) {
+void EventHandler::init(SDL_Renderer *renderer) {
+    std::shared_ptr<Sprite> highLightTexture = std::make_shared<Sprite>(renderer, "images/highlight.png");
+    SDL_Rect rect = {BoardInfo::sideBoardStartX, BoardInfo::sideBoardStartY, 48 ,48};
+    this->highLight.reset(new HighLight(highLightTexture, rect));
+}
+// Modify it!!!!
+// void EventHandler::handleEvent(bool& quit, Color player, GameState state) 
+
+void EventHandler::handleEvent(bool& quit, std::shared_ptr<SideBoard>& sideBoard, SDL_Renderer* renderer) {
+
     while( SDL_PollEvent( &event ) != 0 )
     {
         //User requests quit
@@ -30,15 +40,19 @@ void EventHandler::handleEvent(bool& quit, Color player, GameState state) {
 }
 
 void EventHandler::handlePrepPhase() const {
-    if (mc->getClickX() > BoardInfo::sideBoardStartX && mc->getClickX() < BoardInfo::sideBoardEndX
-        && mc->getClickY() > BoardInfo::sideBoardStartY && mc->getClickY() < BoardInfo::sideBoardEndY) {
+  if (mc->getClickX() > BoardInfo::sideBoardStartX && mc->getClickX() < BoardInfo::sideBoardEndX
+                && mc->getClickY() > BoardInfo::sideBoardStartY && mc->getClickY() < BoardInfo::sideBoardEndY) {
                 std::shared_ptr<Card> currentCard = sideBoard->getCard(mc->getClickX(), mc->getClickY());
                 if (currentCard) {
-//                    SDL_RenderDrawRect()
+                    if (isHighLighted) {
+                        highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());
+                    }
+                    else {
+                        highLight->setPosition(currentCard->getPosX(), currentCard->getPosY());
+                        isHighLighted = true;
+                    }
                 }
-
-                std::cout << "X: " << mc->getClickX() << " Y: " << mc->getClickY() << std::endl;
-            }
+  }
 }
 
 void EventHandler::handleGameLoop() {

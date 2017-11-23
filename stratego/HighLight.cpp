@@ -12,3 +12,8 @@ HighLight::HighLight(std::shared_ptr<Sprite> sprite, SDL_Rect &rect) {
 void HighLight::draw(SDL_Renderer *renderer) const {
     SDL_RenderCopy(renderer, sprite->getTexture(), NULL, &rect);
 }
+
+void HighLight::setPosition(int posX, int posY) {
+    this->rect.x = posX;
+    this->rect.y = posY;
+}
