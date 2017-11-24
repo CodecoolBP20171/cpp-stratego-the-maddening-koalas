@@ -7,7 +7,6 @@
 
 
 #include <vector>
-#include <memory>
 #include <string>
 
 #include "StrategoEnum.h"
@@ -15,20 +14,20 @@
 
 class SpriteCardsResource {
 public:
-    SpriteCardsResource(const Color& color, SDL_Renderer* renderer) { this->generateSprites(color, renderer); }
+    SpriteCardsResource(const Color& color, std::unique_ptr<SDL_Renderer, SdlDeleter>&  renderer) { this->generateSprites(color, renderer); }
     ~SpriteCardsResource() = default;
 
-    void generateSprites(const Color& color, SDL_Renderer* renderer);
-    std::shared_ptr<Sprite> getSprite(SpriteName name);
-    std::shared_ptr<Sprite> getSprite(NeutralName name);
+    void generateSprites(const Color& color, std::unique_ptr<SDL_Renderer, SdlDeleter>&  renderer);
+    std::shared_ptr<Sprite> getSprite(SpriteName& name);
+    std::shared_ptr<Sprite> getSprite(NeutralName& name);
 
 
 private:
     std::vector<std::shared_ptr<Sprite>> strategoSprites;
 
-    void generateNeutralSprites(SDL_Renderer* renderer);
+    void generateNeutralSprites(std::unique_ptr<SDL_Renderer, SdlDeleter>& renderer);
 
-    void genearetPlayerCards(SDL_Renderer *renderer, const std::string &playerColor);
+    void genearetPlayerCards(std::unique_ptr<SDL_Renderer, SdlDeleter>& renderer, const std::string &playerColor);
 };
 
 

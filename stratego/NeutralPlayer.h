@@ -11,7 +11,7 @@
 
 class NeutralPlayer {
 public:
-    NeutralPlayer(const Color& color, SDL_Renderer* renderer);
+    NeutralPlayer(const Color& color, std::unique_ptr<SDL_Renderer, SdlDeleter>& renderer);
     ~NeutralPlayer() = default;
     Color getColor(){ return color; }
 

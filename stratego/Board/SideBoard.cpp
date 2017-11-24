@@ -4,7 +4,7 @@
 
 #include "SideBoard.h"
 
-void SideBoard::setPlayerCards(std::shared_ptr<Player> player) {
+void SideBoard::setPlayerCards(std::shared_ptr<Player>& player) {
     for (unsigned colY = 0; colY < 8; ++colY) {
         for (unsigned colX = 0; colX < 5; ++colX) {
             player->getCards()[colX+colY * 5]->setPosition(BoardInfo::sideBoardStartX + colX * BoardInfo::cardWidth,
@@ -29,7 +29,7 @@ std::shared_ptr<Card> SideBoard::getCard(int& x, int& y) {
     return nullptr;
 }
 
-void SideBoard::removePlayerCard(std::shared_ptr<Card> card) {
+void SideBoard::removePlayerCard(std::shared_ptr<Card>& card) {
     for (unsigned colY = 0; colY < 8; ++colY) {
         for (unsigned colX = 0; colX < 5; ++colX) {
             if(card == board[colY][colX]){
@@ -41,7 +41,7 @@ void SideBoard::removePlayerCard(std::shared_ptr<Card> card) {
     }
 }
 
-bool SideBoard::isCardOnSide(std::shared_ptr<Card> card) {
+bool SideBoard::isCardOnSide(std::shared_ptr<Card>& card) {
     for (unsigned colY = 0; colY < 8; ++colY) {
         for (unsigned colX = 0; colX < 5; ++colX) {
             if(card == board[colY][colX]){

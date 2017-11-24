@@ -4,7 +4,7 @@
 
 #include "Card.h"
 
-Card::Card(std::shared_ptr<Sprite> cardFace, std::shared_ptr<Sprite> cardBack, SDL_Rect& rect, int value) {
+Card::Card(std::shared_ptr<Sprite> cardFace, std::shared_ptr<Sprite>& cardBack, SDL_Rect& rect, int& value) {
     this->sprite = cardFace;
     this->cardBack = cardBack;
     this->rect = rect;
@@ -12,7 +12,7 @@ Card::Card(std::shared_ptr<Sprite> cardFace, std::shared_ptr<Sprite> cardBack, S
     faceDown = false;
 }
 
-void Card::draw(SDL_Renderer *renderer) const {
+void Card::draw(std::unique_ptr<SDL_Renderer, SdlDeleter>& renderer) const {
     if(!sprite) return;
     if(faceDown){
         SDL_RenderCopy(renderer, cardBack->getTexture(), NULL, &rect);

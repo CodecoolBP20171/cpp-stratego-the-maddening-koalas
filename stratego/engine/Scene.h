@@ -13,10 +13,10 @@ public:
 	Scene();
 	~Scene();
 
-	void addPlayer(std::shared_ptr<Player> player);
-	void addNeutPlayer(std::shared_ptr<NeutralPlayer> neutralPlayers);
+	void addPlayer(std::shared_ptr<Player>& player);
+	void addNeutPlayer(std::shared_ptr<NeutralPlayer>& neutralPlayers);
 
-    void addBackground(std::shared_ptr<Background> bg);
+    void addBackground(std::shared_ptr<Background>& bg);
     void draw(SDL_Renderer* renderer, std::shared_ptr<HighLight>& highlight);
 
     std::vector<std::shared_ptr<Player>> getPlayer() const { return players; }

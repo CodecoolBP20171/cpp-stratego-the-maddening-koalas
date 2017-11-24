@@ -17,7 +17,7 @@ public:
     EventHandler(std::shared_ptr<SideBoard>& sideBoard,
                  std::shared_ptr<HighLight>& highlight);
 //    ~EventHandler();
-    void init(SDL_Renderer* renderer, std::shared_ptr<GameBoard>& gameBoard);
+    void init(std::unique_ptr<SDL_Renderer, SdlDeleter>& renderer, std::shared_ptr<GameBoard>& gameBoard);
     void handleEvent(bool& quit, Color& player, GameState& state);
     std::shared_ptr<HighLight> getHighLight() { return highLight; }
 

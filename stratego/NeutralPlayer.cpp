@@ -4,7 +4,7 @@
 
 #include "NeutralPlayer.h"
 
-NeutralPlayer::NeutralPlayer(const Color &color, SDL_Renderer *renderer) {
+NeutralPlayer::NeutralPlayer(const Color &color, std::unique_ptr<SDL_Renderer, SdlDeleter>& renderer) {
     this->color = color;
     spriteCards.reset(new SpriteCardsResource(this->color, renderer));
     this->generateCards();

@@ -12,7 +12,7 @@ EventHandler::EventHandler(std::shared_ptr<SideBoard>& sideBoard,
     this->sideBoard = sideBoard;
 }
 
-void EventHandler::init(SDL_Renderer *renderer, std::shared_ptr<GameBoard>& gameBoard) {
+void EventHandler::init(std::unique_ptr<SDL_Renderer, SdlDeleter>& renderer, std::shared_ptr<GameBoard>& gameBoard) {
     this->gameBoard = gameBoard;
 
     std::shared_ptr<Sprite> highLightTexture = std::make_shared<Sprite>(renderer, "images/highlight2.png");

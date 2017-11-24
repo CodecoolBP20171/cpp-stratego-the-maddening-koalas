@@ -10,10 +10,10 @@
 
 class Card : public GameObject {
 public:
-    Card(std::shared_ptr<Sprite> cardFace, std::shared_ptr<Sprite> cardBack, SDL_Rect& rect, int type);
+    Card(std::shared_ptr<Sprite>& cardFace, std::shared_ptr<Sprite>& cardBack, SDL_Rect& rect, int& type);
     ~Card() = default;
 
-    void draw(SDL_Renderer* renderer) const override;
+    void draw(std::unique_ptr<SDL_Renderer, SdlDeleter>&  renderer) const override;
 
     int getType() const { return type; }
 

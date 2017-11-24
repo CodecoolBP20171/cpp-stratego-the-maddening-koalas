@@ -15,7 +15,7 @@ public:
     GameObject() = default;
     virtual ~GameObject() = default;
 
-    virtual void draw(SDL_Renderer *renderer) const = 0;
+    virtual void draw(std::unique_ptr<SDL_Renderer, SdlDeleter>& renderer) const = 0;
 
 protected:
     SDL_Rect rect;

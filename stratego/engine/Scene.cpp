@@ -4,12 +4,12 @@ Scene::Scene(){}
 
 Scene::~Scene() {}
 
-void Scene::addPlayer(std::shared_ptr<Player> player)
+void Scene::addPlayer(std::shared_ptr<Player>& player)
 {
 	players.push_back(player);
 }
 
-void Scene::addBackground(std::shared_ptr<Background> bg)
+void Scene::addBackground(std::shared_ptr<Background>& bg)
 {
 	this->background = bg;
 }
@@ -33,6 +33,6 @@ void Scene::draw(SDL_Renderer* renderer, std::shared_ptr<HighLight>& highlight)
     highlight->draw(renderer);
 }
 
-void Scene::addNeutPlayer(std::shared_ptr<NeutralPlayer> neutralPlayers) {
+void Scene::addNeutPlayer(std::shared_ptr<NeutralPlayer>& neutralPlayers) {
 	this->neutralPlayers.push_back(neutralPlayers);
 }

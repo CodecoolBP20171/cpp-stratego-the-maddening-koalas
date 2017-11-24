@@ -2,13 +2,15 @@
 #include "SDL_image.h"
 
 
-Sprite::Sprite(SDL_Renderer* renderer, const std::string& filename) {
+Sprite::Sprite(std::unique_ptr<SDL_Renderer, SdlDeleter>& renderer, const std::string& filename) {
     this->loadTexture(filename, renderer);
 }
 
-SDL_Texture* Sprite::loadTexture(const std::string& filename, SDL_Renderer* renderer)
+std::unique_ptr<SDL_Texture, SdlDeleter> Sprite::loadTexture(const std::string& filename, std::unique_ptr<SDL_Renderer, SdlDeleter>&  renderer)
 {
-	texture = IMG_LoadTexture_RW(renderer, SDL_RWFromFile(filename.c_str(), "rb"), 1);
+	texture = std::unique_ptr<SDL_Texture, SdlDeleter>(
+			IMG_LoadTexture_RW(renderer.get(), SDL_RWFromFile(filename.c_str(), "rb"), 1),
+			SdlDeleter());
 
 	if (texture == nullptr)
 	{

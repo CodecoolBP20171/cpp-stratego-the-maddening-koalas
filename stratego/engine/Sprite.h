@@ -1,20 +1,21 @@
 #ifndef STRATEGO_SPRITE_H
 #define STRATEGO_SPRITE_H
 
-#include "SDL.h"
+#include "SdlDeleter.hpp
 #include <iostream>
+#include <memory>
 
 class Sprite
 {
 public:
-	Sprite(SDL_Renderer* renderer, const std::string& filename);
-    ~Sprite() { if (texture) SDL_DestroyTexture(texture); }
-	SDL_Texture* loadTexture(const std::string& filename, SDL_Renderer* renderer);
+	Sprite(std::unique_ptr<SDL_Renderer, SdlDeleter>&  renderer, const std::string& filename);
+//    ~Sprite() { if (texture) SDL_DestroyTexture(texture); }
+	std::unique_ptr<SDL_Texture, SdlDeleter> loadTexture(const std::string& filename, std::unique_ptr<SDL_Renderer, SdlDeleter>& renderer);
 
-    SDL_Texture* getTexture() const { return texture; }
+	std::unique_ptr<SDL_Texture, SdlDeleter>  getTexture() const { return texture; }
 
 protected:
-	SDL_Texture* texture;
+	std::unique_ptr<SDL_Texture, SdlDeleter>  texture;
 };
 
 #endif // STRATEGO_SPRITE_H

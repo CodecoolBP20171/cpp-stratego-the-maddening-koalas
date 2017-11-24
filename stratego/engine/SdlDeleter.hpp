@@ -2,12 +2,11 @@
 // Created by bekor on 11/24/17.
 //
 
-#ifndef STRATEGO_SDLDELETER_H
-#define STRATEGO_SDLDELETER_H
+#ifndef STRATEGO_SDLDELETER_HPP
+#define STRATEGO_SDLDELETER_HPP
 
 
-#include <SDL_video.h>
-#include <SDL_render.h>
+#include "SDL.h"
 
 struct SdlDeleter {
     void operator()(SDL_Window *p) const { SDL_DestroyWindow(p); }
@@ -17,4 +16,4 @@ struct SdlDeleter {
 };
 
 
-#endif //STRATEGO_SDLDELETER_H
+#endif //STRATEGO_SDLDELETER_HPP
